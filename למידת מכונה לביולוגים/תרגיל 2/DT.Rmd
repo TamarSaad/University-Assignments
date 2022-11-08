@@ -1,0 +1,70 @@
+---
+title: "RT"
+author: "Or Arbel"
+date: '2022-05-18'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(gmodels)
+library(C50)
+library(ggplot2)
+# read data
+seeds <- read.csv("seeds.csv")
+seeds$Type<-as.factor(seeds$Type)
+
+# Consider setting a seed for reproducible results
+set.seed(1234)
+```
+
+split the samples for train set and validation set - 1/4 of the samples for 
+validation set, and the rest for the training set:
+
+```{r}
+# sample 800 observations out of the total 1000
+train_sample <- sample(199, 150)
+
+# split into train/test
+seeds_train <- seeds[train_sample, ]
+seeds_test <- seeds[-train_sample, ]
+
+# check that we got about 30% defaulted loans in each dataset:
+prop.table(table(seeds_train$Type))
+prop.table(table(seeds_test$Type))
+```
+
+using Decision Tree (C5.0) algorithm to predict the seeds types. 
+we used a hyper parameter called "minCases" that determines that 3 is the
+smallest number of samples that must be put in at least two of the splits.
+this hyper parameter turned to cause the algorithm to predict the seeds type
+in the most accurate way.
+
+
+```{r}
+# apply model in training data (8th column is the label to be predicted)
+seeds_model <- C5.0(seeds_train[-8], seeds_train$Type, control = C5.0Control(minCases  = 3))
+
+seeds_model
+```
+
+some plots that show the model.
+
+```{r}
+summary(seeds_model)
+plot(seeds_model, main = 'seeds model')
+```
+
+we can see that the model is right for about 98% of the samples, which means that the model is good.
+to make sure that there isn't over fitting, we will predict the validation set, 
+and see if the predictions are good for it too.
+
+```{r}
+# apply model on test data
+seeds_pred <- predict(seeds_model, seeds_test)
+
+CrossTable(seeds_test$Type, seeds_pred, prop.chisq = FALSE, prop.c = FALSE, 
+           prop.r = FALSE, dnn = c('actual type', 'predicted type'))
+```
+
+we can see that mos of the seeds were predicted for the right size, 
+so it is possible to say that the model is good for this dataset.

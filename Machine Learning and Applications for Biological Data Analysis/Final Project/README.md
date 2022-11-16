@@ -1,0 +1,1 @@
+In the final project we were required to choose a biological dataset and analyse it, and use ML tools for classification. We chose breast cancer dataset, as explained in the presentation. 

@@ -1,0 +1,1 @@
+In this assignment we used ML tools to classify the type of weat seeds, using KNN and Decision Tree

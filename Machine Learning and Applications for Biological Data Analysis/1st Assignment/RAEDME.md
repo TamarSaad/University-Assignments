@@ -1,0 +1,1 @@
+In this assignment we analysed a csv file containing Netflix data, in order to see what kind of information we can get from it.

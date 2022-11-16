@@ -1,0 +1,7 @@
+{
+  "PatternsToDomainsInput" : "C:/Studies/ex3/ex3_input_patterns.csv",
+  "GenomicSequencesInput": "C:/Studies/ex3/ex3_input_genomic_sequences.txt",
+  "OutputFile": "C:/Studies/ex3/ex3_output_patterns.csv",
+  "MaxCycles": 5,
+  "MaxCells": 200
+}

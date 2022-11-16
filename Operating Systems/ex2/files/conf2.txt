@@ -1,0 +1,3 @@
+/mnt/c/Studies/3rd year/CS/Operating Systems/ex2/files/students
+/mnt/c/Studies/3rd year/CS/Operating Systems/ex2/files/io/input.txt
+/mnt/c/Studies/3rd year/CS/Operating Systems/ex2/files/io/correct_output.txt

@@ -1,0 +1,3 @@
+/mnt/c/Studies/2nd year/CS/milestone2/cmake-build-wsl_profile/CMakeFiles/rebuild_cache.dir
+/mnt/c/Studies/2nd year/CS/milestone2/cmake-build-wsl_profile/CMakeFiles/edit_cache.dir
+/mnt/c/Studies/2nd year/CS/milestone2/cmake-build-wsl_profile/CMakeFiles/milestone2.dir
